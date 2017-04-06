@@ -31,7 +31,7 @@ RDEPEND="
 	!libav? ( >=media-video/ffmpeg-2.6:0= )
 	sci-libs/gts
 	>=sci-physics/bullet-2.82
-	>=dev-libs/sdformat-4.1:=
+	>=dev-libs/sdformat-4.1:0/4
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtwebkit:4
