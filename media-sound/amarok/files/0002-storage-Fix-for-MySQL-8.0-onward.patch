@@ -1,0 +1,39 @@
+From 5c2305b6dece08cda235bc5c8629c67c26bcd95f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Victor=20Matar=C3=A9?= <matare@fh-aachen.de>
+Date: Fri, 20 Mar 2020 18:04:23 +0100
+Subject: [PATCH 2/2] storage: Fix for MySQL 8.0 onward
+
+The external API was slightly redesigned.
+---
+ src/core-impl/storage/sql/mysql-shared/MySqlStorage.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/core-impl/storage/sql/mysql-shared/MySqlStorage.h b/src/core-impl/storage/sql/mysql-shared/MySqlStorage.h
+index eb88e7582c..8b51dd206b 100644
+--- a/src/core-impl/storage/sql/mysql-shared/MySqlStorage.h
++++ b/src/core-impl/storage/sql/mysql-shared/MySqlStorage.h
+@@ -19,6 +19,7 @@
+ #define AMAROK_STORAGE_MYSQLSTORAGE_H
+ 
+ #include "core/storage/SqlStorage.h"
++#include <mysql/mysql_version.h>
+ 
+ 
+ #include <QMutex>
+@@ -28,8 +29,13 @@
+   #include <winsock2.h>
+ #endif
+ 
++#if MYSQL_VERSION_ID < 60000
+ struct st_mysql;
+ typedef struct st_mysql MYSQL;
++#else
++struct MYSQL;
++using my_bool = bool;
++#endif
+ 
+ /**
+  * Implements a SqlStorage using a MySQL backend
+-- 
+2.25.2
+
