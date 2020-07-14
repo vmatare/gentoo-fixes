@@ -1,0 +1,45 @@
+From eb8187d26d0f3e4c6426fc9f616b56b908a9d188 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Victor=20Matar=C3=A9?= <matare@fh-aachen.de>
+Date: Fri, 15 May 2020 03:53:49 +0200
+Subject: [PATCH 2/2] fix build with boost-1.73
+
+---
+ gazebo/gui/model/ModelTreeWidget.cc     | 3 +++
+ gazebo/gui/model/SchematicViewWidget.cc | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/gazebo/gui/model/ModelTreeWidget.cc b/gazebo/gui/model/ModelTreeWidget.cc
+index 860b930a5f..414f00e29f 100644
+--- a/gazebo/gui/model/ModelTreeWidget.cc
++++ b/gazebo/gui/model/ModelTreeWidget.cc
+@@ -22,8 +22,11 @@
+ #include "gazebo/gui/model/ModelPluginInspector.hh"
+ #include "gazebo/gui/model/ModelTreeWidget.hh"
+ 
++#include <boost/bind/bind.hpp>
++
+ using namespace gazebo;
+ using namespace gui;
++using namespace boost::placeholders;
+ 
+ /////////////////////////////////////////////////
+ ModelTreeWidget::ModelTreeWidget(QWidget *_parent)
+diff --git a/gazebo/gui/model/SchematicViewWidget.cc b/gazebo/gui/model/SchematicViewWidget.cc
+index 957a41f64b..0e52111903 100644
+--- a/gazebo/gui/model/SchematicViewWidget.cc
++++ b/gazebo/gui/model/SchematicViewWidget.cc
+@@ -30,8 +30,11 @@
+ #include "gazebo/gui/model/ModelEditorEvents.hh"
+ #include "gazebo/gui/model/SchematicViewWidget.hh"
+ 
++#include <boost/bind/bind.hpp>
++
+ using namespace gazebo;
+ using namespace gui;
++using namespace boost::placeholders;
+ 
+ /////////////////////////////////////////////////
+ SchematicViewWidget::SchematicViewWidget(QWidget *_parent)
+-- 
+2.26.2
+
