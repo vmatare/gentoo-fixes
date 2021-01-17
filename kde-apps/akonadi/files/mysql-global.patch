@@ -1,0 +1,25 @@
+--- a/src/server/storage/mysql-global.conf	2020-10-05 10:01:17.000000000 +0200
++++ b/src/server/storage/mysql-global.conf	2020-10-10 21:03:45.079541366 +0200
+@@ -61,9 +61,6 @@
+ # # error log file name, relative to datadir (default:hostname.err)
+ log_error=mysql.err
+ 
+-# print warnings and connection errors (default:1)
+-log_warnings=2
+-
+ # Convert table named to lowercase
+ lower_case_table_names=1
+ 
+@@ -76,12 +73,6 @@
+ # The two options below make no sense with prepared statements and/or transactions
+ # (make sense when having the same query multiple times)
+ 
+-# Memory allocated for caching query results (default:0 (disabled))
+-query_cache_size=0
+-
+-# Do not cache results (default:1)
+-query_cache_type=0
+-
+ # Do not use the privileges mechanisms
+ skip_grant_tables
+ 
